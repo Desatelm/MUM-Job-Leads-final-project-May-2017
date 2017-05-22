@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 import service.UserProfileService;
@@ -50,6 +51,8 @@ public class LoginServlet extends HttpServlet {
 		user = service.getUserByEmail(email);
 		if (user != null) {
 			if (user.getPassword() == password) {
+				HttpSession sess = request.getSession();
+				sess.setAttribute("loginUser", user);
 				RequestDispatcher view = request.getRequestDispatcher("home.jsp");
 				view.forward(request, response);
 			} else {
