@@ -19,7 +19,7 @@
 		</h1>
 
 		<div class='well pull-right col-xs-7' style='margin-left:2px;'>
-			<form>
+			<form action = 'ProfileServlet' method = 'post'>
 				<div style="margin-left: 55px;">
 					<div class='form-group form-inline'>
 
@@ -44,7 +44,7 @@
 						<label> Street </label> <input type='text' class='form-control'
 							name='street' placeholder='Street'> <label> Zip
 							code </label> <input type='text' class='form-control' name='zipcode'
-							pattern="(\d).{5}" title="Zip code must be 5 digits"
+							pattern="(\d){5}" title="Zip code must be 5 digits"
 							placeholder='Zip code'>
 					</div>
 					<div class='form-group form-inline' style="margin-left: 0px;">
@@ -58,26 +58,23 @@
 							title="Please Enter a valid email adress" placeholder='Email'>
 					</div>
 					<div class='form-group form-inline'>
-						<label> Password </label> <input type='text' class='form-control'
-							name='password' pattern="(?=\d+)(?=[az]*)(?=[A-Z]*).{6,}"
-							title="Passward must have atleast 6 characters and atleast one letter and atleast one number "
-							placeholder='Password'>
+						<label> Password </label> <input type='text' id= "pw"  class='form-control'
+							name='password' pattern="(?=\d+)(?=[a-z]+)(?=[A-Z]+){6,}" 
+							title="Passward must have atleast 6 characters and atleast one letter and atleast one number"
+							placeholder='Password' required>
 					</div>
 				</div>
 				<div class='form-group form-inline'>
 					<label> Confirm Password </label> <input type='text'
-						class='form-control' name='repeatpassward'
-						placeholder='Repeat password'>
+						class='form-control' name='repeatpassward' id ='cPw'
+						placeholder='Repeat password' required>
 				</div>
+				<p id ="pwCheck" style = "color: red; margin-left: 120px" ></p>
 				<p class='text-center'>
-					<button class='btn-success' class='btn-lg'>Sign up</button>
+					<button class='btn-success' class='btn-lg' id ='signup' >Sign up</button>
 				<p>
 			</form>
-		</div>
-		<!-- <div>
-			<img src="images/MUM_campus_and_tower_.JPG" class="img-rounded" alt="Cinque Terre"
-				width="38%" height="120%">
-		</div> -->
+		</div>		
 		
 		 <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="3000" >
 
@@ -161,7 +158,7 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	
-	<script src="js/login.js"></script>
+	<script type="text/javascript"  src="profile.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
