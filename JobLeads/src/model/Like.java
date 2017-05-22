@@ -5,7 +5,7 @@ import java.util.Date;
 public class Like {
 	private int likeId;
 	private int userId; 
-	private String postId;
+	private int postId;
 	private Date dateCreated;
 	public int getLikeId() {
 		return likeId;
@@ -19,10 +19,10 @@ public class Like {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getPostId() {
+	public int getPostId() {
 		return postId;
 	}
-	public void setPostId(String postId) {
+	public void setPostId(int postId) {
 		this.postId = postId;
 	}
 	public Date getDateCreated() {
