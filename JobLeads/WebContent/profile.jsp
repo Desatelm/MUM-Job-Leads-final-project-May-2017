@@ -1,12 +1,167 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUM lead position</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="login.css" rel="stylesheet">
+<link href="boots.css" rel="stylesheet">
 </head>
 <body>
 
+	<div class='container  raw'>
+		<h1 class='page.header'
+			style="background-image: url('images/MUM_campus_and_tower_.JPG');">
+			Job Lead Positions! <small> MUM students</small>
+		</h1>
+
+		<div class='well pull-right col-xs-7' style='margin-left:2px;'>
+			<form>
+				<div style="margin-left: 55px;">
+					<div class='form-group form-inline'>
+
+						<label> Full name </label> <input type='text' class='form-control'
+							name='firstname' placeholder='First Name'> <input
+							type='text' class='form-control' name='lastname'
+							placeholder='Last Name'>
+					</div>
+					<div class='form-group form-inline' style="margin-left: 15px;">
+						<label>Gender</label> <select name='gender' class='form-control'>
+							<option selected value='male'>Male</option>
+							<option value='female'>Female</option>
+						</select>
+					</div>
+					<div class='form-group form-inline' style="margin-left: 30px;">
+						<label> State </label> <input type='text' class='form-control'
+							name='state' placeholder='state'> <label
+							style="margin-left: 30px;"> City </label> <input type='text'
+							class='form-control' name='city' placeholder='City'>
+					</div>
+					<div class='form-group form-inline' style="margin-left: 25px;">
+						<label> Street </label> <input type='text' class='form-control'
+							name='street' placeholder='Street'> <label> Zip
+							code </label> <input type='text' class='form-control' name='zipcode'
+							pattern="(\d).{5}" title="Zip code must be 5 digits"
+							placeholder='Zip code'>
+					</div>
+					<div class='form-group form-inline' style="margin-left: 0px;">
+						<label> Birth Year </label> <input type='Date'
+							class='form-control' name='birthyear' placeholder='Birth Year'>
+					</div>
+					<div class='form-group form-inline' style="margin-left: 28px;">
+						<label> Email </label> <input type='text' class='form-control'
+							name='zipcode'
+							pattern="^[a-zA-Z_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}$"
+							title="Please Enter a valid email adress" placeholder='Email'>
+					</div>
+					<div class='form-group form-inline'>
+						<label> Password </label> <input type='text' class='form-control'
+							name='password' pattern="(?=\d+)(?=[az]*)(?=[A-Z]*).{6,}"
+							title="Passward must have atleast 6 characters and atleast one letter and atleast one number "
+							placeholder='Password'>
+					</div>
+				</div>
+				<div class='form-group form-inline'>
+					<label> Confirm Password </label> <input type='text'
+						class='form-control' name='repeatpassward'
+						placeholder='Repeat password'>
+				</div>
+				<p class='text-center'>
+					<button class='btn-success' class='btn-lg'>Sign up</button>
+				<p>
+			</form>
+		</div>
+		<!-- <div>
+			<img src="images/MUM_campus_and_tower_.JPG" class="img-rounded" alt="Cinque Terre"
+				width="38%" height="120%">
+		</div> -->
+		
+		 <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="3000" >
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+                <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper For Slides -->
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Third Slide -->
+                <div class="item active">
+
+                    <!-- Slide Background -->
+                    <img src="images/Global_Country_headquarters.JPG" alt="Bootstrap Touch Slider"  class="img-rounded slide-image"/>
+                    <div class="bs-slider-overlay"></div>
+
+                    <div class="container">
+                        <div class="row">
+                            <!-- Slide Text Layer -->
+                            <div class="slide-text slide_style_left">
+                                <p data-animation="animated zoomInRight" style ="color:white;">Global Country headquarters</p>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+                <!-- Second Slide -->
+                <div class="item">
+
+                    <!-- Slide Background -->
+                    <img src="images/mum-campus.jpg" alt="Bootstrap Touch Slider"  class="img-rounded slide-image"/>
+                    <div class="bs-slider-overlay"></div>
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_center">
+                        <p data-animation="animated flipInX" style ="color:white;"> Beautiful MUM Compus</p>
+                        
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+                <!-- Third Slide -->
+                <div class="item">
+
+                    <!-- Slide Background -->
+                    <img src="images/MUM_campus_and_tower_.JPG" alt="Bootstrap Touch Slider"  class="img-rounded slide-image"/>
+                    <div class="bs-slider-overlay"></div>
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_left">
+                        <h3 data-animation="animated flipInX" style ="color:white;">MUM campus and tower</h3>                        
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+
+            </div><!-- End of Wrapper For Slides -->
+
+            <!-- Left Control -->
+            <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <!-- Right Control -->
+            <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+                <span class="fa fa-angle-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div> <!-- End  bootstrap-touch-slider Slider -->
+
+	</div>
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	
+	<script src="js/login.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
