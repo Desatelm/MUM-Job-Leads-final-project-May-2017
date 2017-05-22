@@ -5,7 +5,7 @@ import java.util.Date;
 public class User {
 	private int userId;
 	private String name;
-	private String gender;
+	private int gender;
 	private String state;
 	private String city;
 	private String street;
@@ -32,11 +32,11 @@ public class User {
 		this.name = name;
 	}
 
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 

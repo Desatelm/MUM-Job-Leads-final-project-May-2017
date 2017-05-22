@@ -70,7 +70,7 @@ public class UserProfileService {
 				user = new User();
 				user.setUserId(rs.getInt(1));
 				user.setName(rs.getString(2));
-				user.setGender(rs.getString(3));
+				user.setGender(rs.getInt(3));
 				user.setState(rs.getString(4));
 				user.setCity(rs.getString(5));
 				user.setStreet(rs.getString(6));
@@ -100,7 +100,7 @@ public class UserProfileService {
 				user = new User();
 				user.setUserId(rs.getInt(1));
 				user.setName(rs.getString(2));
-				user.setGender(rs.getString(3));
+				user.setGender(rs.getInt(3));
 				user.setState(rs.getString(4));
 				user.setCity(rs.getString(5));
 				user.setStreet(rs.getString(6));
@@ -131,7 +131,7 @@ public class UserProfileService {
 				user = new User();
 				user.setUserId(rs.getInt(1));
 				user.setName(rs.getString(2));
-				user.setGender(rs.getString(3));
+				user.setGender(rs.getInt(3));
 				user.setState(rs.getString(4));
 				user.setCity(rs.getString(5));
 				user.setStreet(rs.getString(6));
