@@ -40,7 +40,7 @@ public class UserProfileService {
 					+ user.getStreet() + "'," + "zipcode = '" + user.getZip() + "'," + "birthyear = '"
 					+ user.getBirthYear()+ "'," + "email = '" + user.getEmail() + "'," + "password = '" + user.getPassword()
 					+ "'," + "datecreated = '" + user.getDateCreated() + "'," + "dateupdated = '"
-					+ user.getDateUpdated() + "' WHERE idGuest = " + user.getUserId();
+					+ user.getDateUpdated() + "' WHERE userid = " + user.getUserId();
 			result = this.database.executeUpdate(sql);
 		} catch (Exception e) {
 			e.printStackTrace();

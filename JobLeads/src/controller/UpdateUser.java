@@ -80,6 +80,7 @@ public class UpdateUser extends HttpServlet {
 		if (service.updateUser(user) != 0) {
 			HttpSession sess = request.getSession();
 			sess.setAttribute("loginUser", user);
+			request.setAttribute("signUpError", "");
 			RequestDispatcher view = request.getRequestDispatcher("home.jsp");
 			view.forward(request, response);
 		} else {
