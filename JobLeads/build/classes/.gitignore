@@ -1,2 +1,4 @@
-/controller/
+/dbconnection/
 /service/
+/controller/
+/model/

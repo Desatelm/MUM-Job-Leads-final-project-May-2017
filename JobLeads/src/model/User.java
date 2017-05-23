@@ -13,6 +13,7 @@ public class User {
 	private int birthYear;
 	private String email;
 	private String password;
+
 	private Date dateCreated;
 	private Date dateUpdated;
 

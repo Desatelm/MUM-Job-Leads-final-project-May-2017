@@ -1,8 +1,9 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -63,12 +64,8 @@ public class CreateUser extends HttpServlet {
 		int birthYear = Integer.parseInt(request.getParameter("birthyear"));
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		Date in = new Date();
-		LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-		Date dateCreated = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-		// new
-		// SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("password"));
-		Date dateUpdated = dateCreated;
+		Date timestamp = new Timestamp(new Date().getTime());
+
 		user.setName(name);
 		user.setGender(gen);
 		user.setState(state);
@@ -78,9 +75,11 @@ public class CreateUser extends HttpServlet {
 		user.setEmail(email);
 		user.setBirthYear(birthYear);
 		user.setPassword(password);
-		user.setDateCreated(dateCreated);
-		user.setDateUpdated(dateUpdated);
-		if (service.getUserByEmail(email) == null) {
+		user.setDateCreated(timestamp);
+		user.setDateUpdated(timestamp);
+		User savedUser = service.getUserByEmail(email);
+		if (savedUser == null) {
+
 			if (service.saveUser(user) != 0) {
 				HttpSession sess = request.getSession();
 				sess.setAttribute("loginUser", user);

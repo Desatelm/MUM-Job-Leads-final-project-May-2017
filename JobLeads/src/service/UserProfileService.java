@@ -13,14 +13,16 @@ public class UserProfileService {
 	public int saveUser(User user) {
 		int userId = 0;
 		try {
-			String sql = "INSERT INTO users (userid, fullname, gender, state, city, street,zipcode, birthyear, email, password, datecreated, datecreated "
+			String sql = "INSERT INTO users (userid, fullname, gender, state, city, street,zipcode, birthyear, email, password, datecreated, dateupdated "
 					+ ") VALUES ('" + user.getUserId() + "','" + user.getName() + "','" + user.getGender() + "','"
-					+ user.getState() + "','" + user.getCity() + "'," + user.getStreet() + ",'" + user.getZip()
-					+ user.getBirthYear() + "','" + user.getEmail() +"','" + user.getPassword() + "'," + user.getDateCreated() + ",'"
+					+ user.getState() + "','" + user.getCity() + "','" + user.getStreet() + "','" + user.getZip()+ "','" 
+					+ user.getBirthYear() + "','" + user.getEmail() +"','" + user.getPassword() + "','" + user.getDateCreated() + "','"
 					+ user.getDateUpdated() + "')";
+			
 			userId = this.database.executeUpdate(sql);
 			if (userId != 0) {
-				user.setUserId(userId);
+				
+				user.setUserId(userId);				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -35,8 +37,8 @@ public class UserProfileService {
 		try {
 			String sql = "UPDATE users SET fullname = '" + user.getName() + "'," + "gender = '" + user.getGender()
 					+ "'," + "state = '" + user.getState() + "'," + "city = '" + user.getCity() + "'," + "street = '"
-					+ user.getStreet() + "'," + "zipcode = " + user.getZip() + "," + "birthyear = '"
-					+ user.getBirthYear() + "email = '" + user.getEmail() + "'," + "password = '" + user.getPassword()
+					+ user.getStreet() + "'," + "zipcode = '" + user.getZip() + "'," + "birthyear = '"
+					+ user.getBirthYear()+ "'," + "email = '" + user.getEmail() + "'," + "password = '" + user.getPassword()
 					+ "'," + "datecreated = '" + user.getDateCreated() + "'," + "dateupdated = '"
 					+ user.getDateUpdated() + "' WHERE idGuest = " + user.getUserId();
 			result = this.database.executeUpdate(sql);
