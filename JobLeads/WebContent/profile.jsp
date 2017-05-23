@@ -58,7 +58,7 @@
 							title="Please Enter a valid email adress" placeholder='Email'>
 					</div>
 					<div class='form-group form-inline'>
-						<label> Password </label> <input type='text' id= "pw"  class='form-control'
+						<label> Password </label> <input type='password' id= "pw"  class='form-control'
 							name='password' pattern="(?=\d+)(?=[a-z]+)(?=[A-Z]+){6,}" 
 							title="Passward must have atleast 6 characters and atleast one letter and atleast one number"
 							placeholder='Password' required>
@@ -136,18 +136,7 @@
 
             </div><!-- End of Wrapper For Slides -->
 
-            <!-- Left Control -->
-            <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
-                <span class="fa fa-angle-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-
-            <!-- Right Control -->
-            <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
-                <span class="fa fa-angle-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-
+            
         </div> <!-- End  bootstrap-touch-slider Slider -->
 
 	</div>

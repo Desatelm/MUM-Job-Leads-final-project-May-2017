@@ -1,5 +1,7 @@
-.jobOffer{	      
+
+#jobSeek{
+	display:none;
 }
-.jobSeek{
-	display:none
+#weatherInfo{
+   dispaly: none;
 }

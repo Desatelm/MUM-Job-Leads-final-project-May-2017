@@ -1,17 +1,231 @@
-$(function(){
+
+currentpage = 1;
+$(function() {
 	$("#jobOfferBtn").click(displayJobOffer);
 	$("#jobSeekBtn").click(displayJobSeek);
-	$("#weatherInfoBtn").click(displayWeatherInfo);
-	alert("hi");
+	$("#weatherInfoBtn").click(displayWeatherInfo);	
+	$("#postSubmit").click(addPost);
+    
+	postJob(currentpage);
+	$(window).scroll(function(){
+		if($(window).scrollTop() == $(document).height()-$(window).height()){
+			currentpage += 1;
+			postJob();
+		}	
+		});
+
 });
 
-function displayJobOffer(){
-	
+
+function displayJobOffer() {
+
 	document.getElementById("jobOffer").style.display = "block";
 	document.getElementById("jobSeek").style.display = "none";
+	document.getElementById("weatherInfo").style.display = "none";
 }
-function displayJobSeek(){
-	
+function displayJobSeek() {
+
 	document.getElementById("jobOffer").style.display = "none";
 	document.getElementById("jobSeek").style.display = "block";
+	document.getElementById("weatherInfo").style.display = "none";
+}
+function displayWeatherInfo() {
+	document.getElementById("jobOffer").style.display = "none";
+	document.getElementById("jobSeek").style.display = "none";
+	document.getElementById("weatherInfo").style.display = "block";
+
+}
+
+/*function updatePost() {	
+	$.ajax("guest.ajax", {
+		"type" : "post",
+		"data" : {
+			"first" : first,
+			"last" : last
+		}
+	}).done(displayPost);
+
+}
+*/
+function postJob() {
+	var root = 'http://jsonplaceholder.typicode.com';
+	var userID = $('#locationSearch').val();
+	
+	$.ajax(root + '/posts/', {
+
+		/*data : {
+			userId : 3,	
+			
+		}*/
+		 "type" : "Get"
+
+	}).done(displayPost);
+
+}
+function displayPost(data) {
+	var pageNum = currentpage*15;	
+	var post = $('<div>');
+	for (var i = 0; i < pageNum; i++) {
+		post.append($('<p>', {
+			'attr' : {
+				class : 'form-inline'
+			},
+			'html' : data[i].body,
+			'css' : {
+				'font-size' : '16px'
+			}
+		}));
+
+		post
+				.append($(
+						'<a>',
+						{
+							'attr' : {
+								class : 'form-inline,form-inline, glyphicon glyphicon-thumbs-up'
+							},
+							'html' : 'Like',
+							'css' : {
+								'margin-bottom' : '10px'
+							}
+
+						}));
+
+		post.append($('<a>', {
+			'attr' : {
+				class : 'form-inline,form-inline, glyphicon glyphicon-comment '
+			},
+			'html' : 'Comments',
+			'css' : {
+				'margin-left' : '10px',
+				'margin-bottom' : '10px'
+			}
+
+		}));
+		post
+				.append($(
+						'<a>',
+						{
+							'attr' : {
+								class : 'form-inline, pull-right btn-default, glyphicon glyphicon-map-marker',
+								'aria-hidden' : "true"
+							},
+							'html' : $("#locationSearch").val(),
+							'css' : {
+								'margin-bottom' : '10px'
+							}
+						}));
+		post.append($('<p>'));
+		post.append($('<input>', {
+			'attr' : {
+				class : 'form-control'
+			},
+			'type' : 'text',
+			'placeholder' : 'write Comment...',
+			'css' : {
+				'margin-bottom' : '10px'
+			}
+		}));
+
+	}
+
+	$("#divPost").html(post);
+
+}
+function addPost(data) {
+	var date = new Date();
+	var year = date.getFullYear();
+	var  month =date.getMonth() + 1;
+	var day = date.getDate();
+	var formatDate = day + '/' + month  +'/' + year; 		
+	var post = $('<div>');	
+	post.append($('<p>', {		'attr' : {
+			class : 'form-inline'
+		},
+		'html' : $("#offersTextArea").val(),
+		'css' : {
+			'font-size' : '16px'
+		}
+	}));
+
+	post.append($('<a>', {
+		'attr' : {
+			class : 'form-inline,form-inline, glyphicon glyphicon-thumbs-up'
+		},
+		'html' : 'Like',
+		'css' : {
+			'margin-bottom' : '10px'
+		}
+
+	}));
+
+	post.append($('<a>', {
+		'attr' : {
+			class : 'form-inline,form-inline, glyphicon glyphicon-comment '
+		},
+		'html' : 'Comments',
+		'css' : {
+			'margin-left' : '10px',
+			'margin-bottom' : '10px'
+		}
+
+	}));
+	post.append($('<span>', {
+		'attr' : {
+			class : 'form-inline'
+		},
+		'html' : "Posted:" + formatDate,
+		'css' : {
+			'margin-left' : '10px',
+			'margin-bottom' : '10px'
+		}
+
+	}));
+	
+	post.append($('<button>', {
+		'attr' : {
+			class : 'form-inline, pull-right btn-default'
+		},
+		'html' : 'delet',
+		'click' : function(){
+			$("#addPost").empty();
+		},
+		'css' : {
+			'margin-bottom' : '10px',
+			'margin-left' : '10px'	
+		}
+	}));
+
+	post.append($(
+					'<a>',
+					{
+						'attr' : {
+							class : 'form-inline, pull-right btn-default, glyphicon glyphicon-map-marker',
+							'aria-hidden' : "true"
+						},
+						'html' : $("#locationSearch").val(),
+						'css' : {
+							'margin-bottom' : '10px'
+						}
+					}));
+	post.append($('<p>'));
+	post.append($('<input>', {
+		'attr' : {
+			class : 'form-control'
+		},
+		'type' : 'text',
+		'placeholder' : 'write Comment...',
+		'css' : {
+			'margin-bottom' : '10px'
+		}
+	}));
+
+	//}
+
+	$("#addPost").html(post);
+
+}
+function postJobScroll() {
+	while ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+		$(document.body).append($('<div>').addClass('divPost'));
+	}
 }
