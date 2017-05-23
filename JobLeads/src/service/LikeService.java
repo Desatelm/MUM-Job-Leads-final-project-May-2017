@@ -78,19 +78,21 @@ public class LikeService {
 		return lik;
 	}
 
-	public Like getLikeByUserIdAndPostId(int userId, int postId) {
-	
+	public List<Like> getLikeByUserIdAndPostId(int userId, int postId) {
+		List<Like> likes = new ArrayList<>();
 		Like lik = null;
 		try {
-			String sql = "SELECT * FROM likes WHERE userid = '" + userId+ "and" + "postid = '" + postId + "'" + "' LIMIT 1";
+			String sql = "SELECT * FROM likes WHERE userid = '" + userId + "and" + "postid = '" + postId + "'"
+					+ "' LIMIT 1";
 			ResultSet rs = this.database.executeQuery(sql);
-			if (rs.next()) {
+			while (rs.next()) {
 				lik = new Like();
 				lik.setLikeId(rs.getInt(1));
 				lik.setUserId(rs.getInt(2));
 				lik.setPostId(rs.getInt(3));
 				lik.setDateCreated(rs.getDate(4));
 				lik.setDateUpdated(rs.getDate(5));
+				likes.add(lik);
 			}
 
 		} catch (Exception e) {
@@ -98,7 +100,7 @@ public class LikeService {
 		} finally {
 			this.database.closeConnection();
 		}
-		return lik;
+		return likes;
 	}
 
 	public List<Like> getAllLikes() {

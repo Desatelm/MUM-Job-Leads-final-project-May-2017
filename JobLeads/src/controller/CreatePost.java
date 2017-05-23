@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -64,11 +65,9 @@ public class CreatePost extends HttpServlet {
 				post.setPost(seeks);
 			}
 			post.setPostType(pType);
-			Date in = new Date();
-			LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-			Date dateCreated = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-			post.setDateCreated(dateCreated);
-			post.setDateUpdated(dateCreated);
+			Date timestamp = new Timestamp(new Date().getTime());
+			post.setDateCreated(timestamp);
+			post.setDateUpdated(timestamp);
 			if (service.savePost(post) != 0) {
 				RequestDispatcher view = request.getRequestDispatcher("home.jsp");
 				view.forward(request, response);
