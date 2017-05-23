@@ -103,6 +103,7 @@ public class Database implements IDatabase {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
+        	System.out.println(e.getMessage());
             e.printStackTrace();
         }
         return result;

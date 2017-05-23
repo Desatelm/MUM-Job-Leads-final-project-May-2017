@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -63,12 +64,7 @@ public class UpdateUser extends HttpServlet {
 		int birthYear = Integer.parseInt(request.getParameter("birthyear"));
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		Date in = new Date();
-		LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-		Date dateCreated = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-		// new
-		// SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("password"));
-		Date dateUpdated = dateCreated;
+		Date timestamp = new Timestamp(new Date().getTime());
 		user.setName(name);
 		user.setGender(gen);
 		user.setState(state);
@@ -78,8 +74,8 @@ public class UpdateUser extends HttpServlet {
 		user.setEmail(email);
 		user.setBirthYear(birthYear);
 		user.setPassword(password);
-		user.setDateCreated(dateCreated);
-		user.setDateUpdated(dateUpdated);
+		user.setDateCreated(timestamp);
+		user.setDateUpdated(timestamp);
 
 		if (service.updateUser(user) != 0) {
 			HttpSession sess = request.getSession();

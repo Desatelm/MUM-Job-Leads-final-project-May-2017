@@ -19,7 +19,7 @@
 		</h1>
 
 		<div class='well pull-right col-xs-7' style='margin-left:2px;'>
-			<form action = 'CreatUser' method = 'post'>
+			<form action = 'CreateUser' method = 'post'>
 				<div style="margin-left: 55px;">
 					<div class='form-group form-inline'>
 

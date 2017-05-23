@@ -16,7 +16,7 @@ import service.UserProfileService;
 /**
  * Servlet implementation class loginServlet
  */
-@WebServlet("/loginServlet")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,10 +47,10 @@ public class LoginServlet extends HttpServlet {
 		User user = null;
 		UserProfileService service = new UserProfileService();
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String password = request.getParameter("passward");
 		user = service.getUserByEmail(email);
 		if (user != null) {
-			if (user.getPassword() == password) {
+			if (user.getPassword().equals(password) ) {
 				HttpSession sess = request.getSession();
 				sess.setAttribute("loginUser", user);
 				RequestDispatcher view = request.getRequestDispatcher("home.jsp");
@@ -58,13 +58,13 @@ public class LoginServlet extends HttpServlet {
 			} else {
 				// password error
 				request.setAttribute("loginError", "The password is incorrect.");
-				RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("login.html");
 				view.forward(request, response);
 			}
 		} else {
 			// email incorrect
 			request.setAttribute("loginError", "The email is incorrect.");
-			RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("login.html");
 			view.forward(request, response);
 		}
 	}
