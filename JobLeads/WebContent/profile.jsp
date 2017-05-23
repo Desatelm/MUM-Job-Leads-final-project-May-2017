@@ -19,7 +19,7 @@
 		</h1>
 
 		<div class='well pull-right col-xs-7' style='margin-left:2px;'>
-			<form action = 'ProfileServlet' method = 'post'>
+			<form action = 'CreatUser' method = 'post'>
 				<div style="margin-left: 55px;">
 					<div class='form-group form-inline'>
 
