@@ -53,7 +53,7 @@
 					</div>
 					<div class='form-group form-inline' style="margin-left: 28px;">
 						<label> Email </label> <input type='text' class='form-control'
-							name='zipcode'
+							name='email'
 							pattern="^[a-zA-Z_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}$"
 							title="Please Enter a valid email adress" placeholder='Email'>
 					</div>
