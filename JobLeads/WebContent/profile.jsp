@@ -66,7 +66,7 @@
 				</div>
 				<div class='form-group form-inline'>
 					<label> Confirm Password </label> <input type='text'
-						class='form-control' name='repeatpassward' value="${loginUser.password}" id ='cPw'
+						class='form-control' type = 'password' name='repeatpassward' value="${loginUser.password}" id ='cPw'
 						placeholder='Repeat password' required>
 				</div>
 				<p id ="pwCheck" style = "color: red; margin-left: 120px" ></p>
