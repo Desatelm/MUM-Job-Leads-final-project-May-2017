@@ -16,7 +16,7 @@ public class UserProfileService {
 			String sql = "INSERT INTO users (userid, fullname, gender, state, city, street,zipcode, birthyear, email, password, datecreated, datecreated "
 					+ ") VALUES ('" + user.getUserId() + "','" + user.getName() + "','" + user.getGender() + "','"
 					+ user.getState() + "','" + user.getCity() + "'," + user.getStreet() + ",'" + user.getZip()
-					+ user.getBirthYear() + "','" + user.getEmail() + "'," + user.getDateCreated() + ",'"
+					+ user.getBirthYear() + "','" + user.getEmail() +"','" + user.getPassword() + "'," + user.getDateCreated() + ",'"
 					+ user.getDateUpdated() + "')";
 			userId = this.database.executeUpdate(sql);
 			if (userId != 0) {

@@ -51,15 +51,15 @@ public class CreateUser extends HttpServlet {
 		User user = new User();
 		int gen = 0;
 		UserProfileService service = new UserProfileService();
-		String name = request.getParameter("first") + " " + request.getParameter("last");
+		String name = request.getParameter("firstname") + " " + request.getParameter("lastname");
 		String gender = request.getParameter("gender");
-		if (gender.equals("Female")) {
+		if (gender.equals("female")) {
 			gen = 1;
 		}
 		String state = request.getParameter("state");
 		String city = request.getParameter("city");
 		String street = request.getParameter("street");
-		int zip = Integer.parseInt(request.getParameter("zip"));
+		int zip = Integer.parseInt(request.getParameter("zipcode"));
 		int birthYear = Integer.parseInt(request.getParameter("birthyear"));
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
