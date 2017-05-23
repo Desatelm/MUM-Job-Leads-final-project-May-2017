@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
-
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import model.Comment;
 import model.User;
-import service.UserProfileService;
+import service.CommentService;
 
 /**
- * Servlet implementation class loginServlet
+ * Servlet implementation class CreateComment
  */
-@WebServlet("/loginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/CreateComment")
+public class CreateComment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginServlet() {
+	public CreateComment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,8 +36,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
@@ -44,27 +45,28 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		User user = null;
-		UserProfileService service = new UserProfileService();
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		user = service.getUserByEmail(email);
+		Comment comm = new Comment();
+		CommentService service = new CommentService();
+		HttpSession sess = request.getSession();
+		String comment = request.getParameter("comment");
+		int postId = Integer.parseInt(request.getParameter("postId"));
+		User user = (User) sess.getAttribute("loginUser");
 		if (user != null) {
-			if (user.getPassword() == password) {
-				HttpSession sess = request.getSession();
-				sess.setAttribute("loginUser", user);
+			comm.setUserId(user.getUserId());
+			comm.setPostId(postId);
+			comm.setComment(comment);
+			Date in = new Date();
+			LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
+			Date dateCreated = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+			comm.setDateCreated(dateCreated);
+			comm.setDateUpdated(dateCreated);
+			if (service.saveComment(comm) != 0) {
 				RequestDispatcher view = request.getRequestDispatcher("home.jsp");
-				view.forward(request, response);
-			} else {
-				// password error
-				request.setAttribute("loginError", "The password is incorrect.");
-				RequestDispatcher view = request.getRequestDispatcher("login.jsp");
 				view.forward(request, response);
 			}
 		} else {
-			// email incorrect
-			request.setAttribute("loginError", "The email is incorrect.");
-			RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+			request.setAttribute("postingError", "There was an error in commenting.");
+			RequestDispatcher view = request.getRequestDispatcher("home.jsp");
 			view.forward(request, response);
 		}
 	}
