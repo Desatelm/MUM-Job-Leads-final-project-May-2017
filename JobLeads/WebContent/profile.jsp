@@ -24,7 +24,7 @@
 					<div class='form-group form-inline'>
 
 						<label> Full name </label> <input type='text' class='form-control'
-							name='firstname' placeholder='First Name'> <input
+							name='firstname' value="${loginUser.name}" placeholder='First Name'> <input
 							type='text' class='form-control' name='lastname'
 							placeholder='Last Name'>
 					</div>
@@ -36,43 +36,44 @@
 					</div>
 					<div class='form-group form-inline' style="margin-left: 30px;">
 						<label> State </label> <input type='text' class='form-control'
-							name='state' placeholder='state'> <label
+							name='state' value="${loginUser.state}" placeholder='state'> <label
 							style="margin-left: 30px;"> City </label> <input type='text'
-							class='form-control' name='city' placeholder='City'>
+							class='form-control' name='city' value=${loginUser.city} placeholder='City'>
 					</div>
 					<div class='form-group form-inline' style="margin-left: 25px;">
 						<label> Street </label> <input type='text' class='form-control'
-							name='street' placeholder='Street'> <label> Zip
-							code </label> <input type='text' class='form-control' name='zipcode'
+							name='street' value="${loginUser.street}" placeholder='Street'> <label> Zip
+							code </label> <input type='text' class='form-control' value=${loginUser.zip} name='zipcode'
 							pattern="(\d){5}" title="Zip code must be 5 digits"
 							placeholder='Zip code'>
 					</div>
 					<div class='form-group form-inline' style="margin-left: 0px;">
 						<label> Birth Year </label> <input type='Date'
-							class='form-control' name='birthyear' placeholder='Birth Year'>
+							class='form-control' name='birthyear' value="${loginUser.birthYear}" placeholder='Birth Year'>
 					</div>
 					<div class='form-group form-inline' style="margin-left: 28px;">
 						<label> Email </label> <input type='text' class='form-control'
-							name='email'
+							name='email' value="${loginUser.email}"
 							pattern="^[a-zA-Z_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}$"
 							title="Please Enter a valid email adress" placeholder='Email'>
 					</div>
 					<div class='form-group form-inline'>
 						<label> Password </label> <input type='password' id= "pw"  class='form-control'
-							name='password' pattern="(?=\d+)(?=[a-z]+)(?=[A-Z]+){6,}" 
+							name='password' value="${loginUser.password}" pattern="(?=\d+)(?=[a-z]+)(?=[A-Z]+){6,}" 
 							title="Passward must have atleast 6 characters and atleast one letter and atleast one number"
 							placeholder='Password' required>
 					</div>
 				</div>
 				<div class='form-group form-inline'>
 					<label> Confirm Password </label> <input type='text'
-						class='form-control' name='repeatpassward' id ='cPw'
+						class='form-control' name='repeatpassward' value="${loginUser.password}" id ='cPw'
 						placeholder='Repeat password' required>
 				</div>
 				<p id ="pwCheck" style = "color: red; margin-left: 120px" ></p>
 				<p class='text-center'>
 					<button class='btn-success' class='btn-lg' id ='signup' >Sign up</button>
 				<p>
+				<p style="color:red">${signUpError }</p>
 			</form>
 		</div>		
 		

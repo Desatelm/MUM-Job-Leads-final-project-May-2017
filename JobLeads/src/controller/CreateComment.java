@@ -1,8 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,11 +54,9 @@ public class CreateComment extends HttpServlet {
 			comm.setUserId(user.getUserId());
 			comm.setPostId(postId);
 			comm.setComment(comment);
-			Date in = new Date();
-			LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-			Date dateCreated = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-			comm.setDateCreated(dateCreated);
-			comm.setDateUpdated(dateCreated);
+			Date timestamp = new Timestamp(new Date().getTime());
+			comm.setDateCreated(timestamp);
+			comm.setDateUpdated(timestamp);
 			if (service.saveComment(comm) != 0) {
 				RequestDispatcher view = request.getRequestDispatcher("home.jsp");
 				view.forward(request, response);

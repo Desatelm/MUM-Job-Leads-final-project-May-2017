@@ -2,8 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -49,6 +47,7 @@ public class CreateUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession sess = request.getSession();
 		User user = new User();
 		int gen = 0;
 		UserProfileService service = new UserProfileService();
@@ -77,23 +76,39 @@ public class CreateUser extends HttpServlet {
 		user.setPassword(password);
 		user.setDateCreated(timestamp);
 		user.setDateUpdated(timestamp);
-		User savedUser = service.getUserByEmail(email);
-		if (savedUser == null) {
-
-			if (service.saveUser(user) != 0) {
-				HttpSession sess = request.getSession();
-				sess.setAttribute("loginUser", user);
-				RequestDispatcher view = request.getRequestDispatcher("home.jsp");
-				view.forward(request, response);
+		User userLog = (User) sess.getAttribute("loginUser");
+		if (userLog == null) {
+			User savedUser = service.getUserByEmail(email);
+			if (savedUser == null) {
+				int result = service.saveUser(user);
+				if (result != 0) {
+					user.setUserId(result);
+					sess.setAttribute("loginUser", user);
+					request.setAttribute("signUpError", "");
+					RequestDispatcher view = request.getRequestDispatcher("home.jsp");
+					view.forward(request, response);
+				} else {
+					request.setAttribute("signUpError", "There is an error in signing up.");
+					RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
+					view.forward(request, response);
+				}
 			} else {
-				request.setAttribute("signUpError", "There is an error in signing up.");
+				request.setAttribute("signUpError", "This email already exists.");
 				RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
 				view.forward(request, response);
 			}
 		} else {
-			request.setAttribute("signUpError", "This email already exists.");
-			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
-			view.forward(request, response);
+			if (service.updateUser(user) != 0) {
+
+				sess.setAttribute("loginUser", user);
+				request.setAttribute("signUpError", "");
+				RequestDispatcher view = request.getRequestDispatcher("home.jsp");
+				view.forward(request, response);
+			} else {
+				request.setAttribute("signUpError", "There is an error in updating user profile.");
+				RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
+				view.forward(request, response);
+			}
 		}
 	}
 
