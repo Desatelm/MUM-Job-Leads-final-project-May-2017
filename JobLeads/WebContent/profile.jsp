@@ -54,18 +54,18 @@
 					<div class='form-group form-inline' style="margin-left: 28px;">
 						<label> Email </label> <input type='text' class='form-control'
 							name='email' value="${loginUser.email}"
-							pattern="^[a-zA-Z_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}$"
-							title="Please Enter a valid email adress" placeholder='Email'>
+							
+							 placeholder='Email'>
 					</div>
 					<div class='form-group form-inline'>
 						<label> Password </label> <input type='password' id= "pw"  class='form-control'
-							name='password' value="${loginUser.password}" pattern="(?=\d+)(?=[a-z]+)(?=[A-Z]+){6,}" 
+							name='password' value="${loginUser.password}" pattern="([0-9]+[a-zA-Z][A-Z]).{6,}" 
 							title="Passward must have atleast 6 characters and atleast one letter and atleast one number"
 							placeholder='Password' required>
 					</div>
 				</div>
 				<div class='form-group form-inline'>
-					<label> Confirm Password </label> <input type='text'
+					<label> Confirm Password </label> <input 
 						class='form-control' type ='password' name='repeatpassward' value="${loginUser.password}" id ='cPw'
 						placeholder='Repeat password' required>
 				</div>
