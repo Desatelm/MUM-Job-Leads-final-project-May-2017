@@ -37,13 +37,13 @@ function displayWeatherInfo() {
 }
 
 function uploadPost() {	
-	$.ajax( "guest.ajax", {
+	$.ajax( "CreatePost", {
 		    "type" : "post",
 		    "data" : {
-		    "first" : first,
-		    "last" : last
+		    "postlead" : $("#offersTextArea").val(),
+		   /// "location" : last
 		}
-	}).done(displayPost);
+	}).done(addPost);
 
 }
 
@@ -137,7 +137,7 @@ function addPost(data) {
 	post.append($('<p>', {		'attr' : {
 			class : 'form-inline'
 		},
-		'html' : $("#offersTextArea").val(),
+		'html' : data.post,
 		'css' : {
 			'font-size' : '16px'
 		}
@@ -147,7 +147,7 @@ function addPost(data) {
 		'attr' : {
 			class : 'form-inline,form-inline, glyphicon glyphicon-thumbs-up'
 		},
-		'html' : 'Like',
+		'html' : 'Like ' + data.noOfLIkes,
 		'css' : {
 			'margin-bottom' : '10px'
 		}
@@ -158,18 +158,29 @@ function addPost(data) {
 		'attr' : {
 			class : 'form-inline,form-inline, glyphicon glyphicon-comment '
 		},
-		'html' : 'Comments',
+		'html' : 'Comments ' + data.noOfComments,
 		'css' : {
 			'margin-left' : '10px',
 			'margin-bottom' : '10px'
-		}
-
-	}));
+		},
+		'click' : function(){
+			var post = $('<ul>');
+			for(var i = 0; i < data.comments.length; i++){
+									
+					post.append($('<li>', {
+						'html': data.comments[i].comment
+					}));		
+								
+					post.append($('<br>'));
+				}
+				$("#comments").html(post);
+			}
+	  }));
 	post.append($('<span>', {
 		'attr' : {
 			class : 'form-inline'
 		},
-		'html' : "Posted:" + formatDate,
+		'html' : data.postDate,
 		'css' : {
 			'margin-left' : '10px',
 			'margin-bottom' : '10px'
@@ -198,7 +209,7 @@ function addPost(data) {
 							class : 'form-inline, pull-right btn-default, glyphicon glyphicon-map-marker',
 							'aria-hidden' : "true"
 						},
-						'html' : $("#locationSearch").val(),
+						'html' : data.location,
 						'css' : {
 							'margin-bottom' : '10px'
 						}

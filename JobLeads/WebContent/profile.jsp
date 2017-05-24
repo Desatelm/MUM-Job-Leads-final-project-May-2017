@@ -66,7 +66,7 @@
 				</div>
 				<div class='form-group form-inline'>
 					<label> Confirm Password </label> <input type='text'
-						class='form-control' type = 'password' name='repeatpassward' value="${loginUser.password}" id ='cPw'
+						class='form-control' type ='password' name='repeatpassward' value="${loginUser.password}" id ='cPw'
 						placeholder='Repeat password' required>
 				</div>
 				<p id ="pwCheck" style = "color: red; margin-left: 120px" ></p>
@@ -144,11 +144,13 @@
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	
-	<script type="text/javascript"  src="profile.js"></script>
+	<!-- <script type="text/javascript"  src="profile.js"></script> -->
+	<script src="login.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
