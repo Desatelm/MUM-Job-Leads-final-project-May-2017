@@ -99,7 +99,9 @@
 				</div>
 			</div>
 		</div>
-		<div class='container' id='jobSeek'>
+		
+		
+	  <div class='container' id='jobSeek'>
 
 			<div class='container raw'>
 				<div class=' container-fluid well col-xs-4'
@@ -109,8 +111,8 @@
 							<legend> Seeking jobs</legend>
 							<textarea class='form-control'
 								style="min-width: 100%; margin-bottom: 25px;" rows="6">
-				Enter job description				
-			</textarea>
+				            Enter job description				
+			     </textarea>
 							<div class='form-group form-inline'>
 								<label> Location: </label> <input type='text'
 									class='form-control' name='search' placeholder='Enter city'>

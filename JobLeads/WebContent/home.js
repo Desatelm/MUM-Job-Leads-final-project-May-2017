@@ -4,7 +4,7 @@ $(function() {
 	$("#jobOfferBtn").click(displayJobOffer);
 	$("#jobSeekBtn").click(displayJobSeek);
 	$("#weatherInfoBtn").click(displayWeatherInfo);	
-	$("#postSubmit").click(addPost);
+	$("#postSubmit").click(uploadPost);
     
 	postJob(currentpage);
 	$(window).scroll(function(){
@@ -36,17 +36,17 @@ function displayWeatherInfo() {
 
 }
 
-/*function updatePost() {	
-	$.ajax("guest.ajax", {
-		"type" : "post",
-		"data" : {
-			"first" : first,
-			"last" : last
+function uploadPost() {	
+	$.ajax( "guest.ajax", {
+		    "type" : "post",
+		    "data" : {
+		    "first" : first,
+		    "last" : last
 		}
 	}).done(displayPost);
 
 }
-*/
+
 function postJob() {
 	var root = 'http://jsonplaceholder.typicode.com';
 	var userID = $('#locationSearch').val();
@@ -132,11 +132,7 @@ function displayPost(data) {
 
 }
 function addPost(data) {
-	var date = new Date();
-	var year = date.getFullYear();
-	var  month =date.getMonth() + 1;
-	var day = date.getDate();
-	var formatDate = day + '/' + month  +'/' + year; 		
+		
 	var post = $('<div>');	
 	post.append($('<p>', {		'attr' : {
 			class : 'form-inline'
