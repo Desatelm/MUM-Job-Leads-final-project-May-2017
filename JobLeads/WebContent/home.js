@@ -40,7 +40,7 @@ function uploadPost() {
 	$.ajax( "CreatePost", {
 		    "type" : "post",
 		    "data" : {
-		    "postlead" : $("#offersTextArea").val(),
+		    "postlead" : $("#offersTextArea").val()
 		   /// "location" : last
 		}
 	}).done(addPost);
