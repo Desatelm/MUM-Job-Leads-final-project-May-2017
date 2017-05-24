@@ -8,9 +8,11 @@ public class PostDetail {
 	private String noOfLIkes;
 	private String noOfComments;
 	private Date postDate;
+	
 	private String post;
 	private String location;
 	private List<Comment> comments;
+	
 
 	public PostDetail(int postId, String noOfLIkes, String noOfComments, Date postDate, String post, String loc,
 			List<Comment> comments) {
