@@ -38,12 +38,12 @@
 						<label> State </label> <input type='text' class='form-control'
 							name='state' value="${loginUser.state}" placeholder='state'> <label
 							style="margin-left: 30px;"> City </label> <input type='text'
-							class='form-control' name='city' value=${loginUser.city} placeholder='City'>
+							class='form-control' name='city' value="${loginUser.city}" placeholder='City'>
 					</div>
 					<div class='form-group form-inline' style="margin-left: 25px;">
 						<label> Street </label> <input type='text' class='form-control'
 							name='street' value="${loginUser.street}" placeholder='Street'> <label> Zip
-							code </label> <input type='text' class='form-control' value=${loginUser.zip} name='zipcode'
+							code </label> <input type='text' class='form-control' value="${loginUser.zip}" name='zipcode'
 							pattern="(\d){5}" title="Zip code must be 5 digits"
 							placeholder='Zip code'>
 					</div>
