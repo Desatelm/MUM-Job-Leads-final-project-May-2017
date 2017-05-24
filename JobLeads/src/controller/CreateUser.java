@@ -105,6 +105,7 @@ public class CreateUser extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher("home.jsp");
 				view.forward(request, response);
 			} else {
+				sess.setAttribute("loginUser", user);
 				request.setAttribute("signUpError", "There is an error in updating user profile.");
 				RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
 				view.forward(request, response);
