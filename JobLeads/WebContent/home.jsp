@@ -23,7 +23,7 @@
 		</div>
 		<div class='container bg-info pull-left nav-bar'
 			style='margin-bottom: 20px'>
-			<form action='logoutServlet' method='get'>
+			<form action='LogoutServlet' method='get'>
 				<button class='btn-info pull-right ' style='margin-left: 5px'>
 					<span class="glyphicon glyphicon-off"></span>Log out
 				</button>

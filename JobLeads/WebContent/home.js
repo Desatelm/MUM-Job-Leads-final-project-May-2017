@@ -38,7 +38,7 @@ function displayWeatherInfo() {
 
 function uploadPost() {	
 	$.ajax( "CreatePost", {
-		    "type" : "post",
+		    "type" : "post", 
 		    "data" : {
 		    "postlead" : $("#offersTextArea").val()
 		   /// "location" : last

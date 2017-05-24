@@ -48,7 +48,8 @@ public class CreatePost extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Post post = new Post();
-		int pType = 2;
+		System.out.println("des");
+		int pType = 0;
 		PostService service = new PostService();
 		HttpSession sess = request.getSession();
 		String leads = request.getParameter("postlead");
@@ -95,8 +96,11 @@ public class CreatePost extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		Post post = new Post();
+		
 		int pType = 2;
+		
 		PostService service = new PostService();
 		HttpSession sess = request.getSession();
 		String leads = request.getParameter("postlead");

@@ -48,7 +48,7 @@
 							placeholder='Zip code'>
 					</div>
 					<div class='form-group form-inline' style="margin-left: 0px;">
-						<label> Birth Year </label> <input type='Date'
+						<label> Birth Year </label> <input type='text'
 							class='form-control' name='birthyear' value="${loginUser.birthYear}" placeholder='Birth Year'>
 					</div>
 					<div class='form-group form-inline' style="margin-left: 28px;">
